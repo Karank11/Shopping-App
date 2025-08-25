@@ -4,15 +4,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shoppingapp.ui.viewmodel.ViewModelFactory
 import com.example.shoppingapp.ui.recyclerview.ProductListAdapter
 import com.example.shoppingapp.ui.viewmodel.MainViewModel
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +17,8 @@ class MainActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val adapter = ProductListAdapter()
         recyclerView.adapter = adapter
-        val appComponent = (application as ShoppingApplication).appComponent
-        appComponent.inject(this)
-        val viewModel: MainViewModel by viewModels {
-            viewModelFactory
-        }
+
+        val viewModel: MainViewModel by viewModels()
 
         viewModel.products.observe(this) { products ->
             adapter.submitList(products)

@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.data.models.Product
 import com.example.shoppingapp.data.repository.ProductsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+@HiltViewModel
 class MainViewModel @Inject constructor (private val productsRepository: ProductsRepository): ViewModel() {
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>>

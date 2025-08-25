@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id 'kotlin-kapt'
-//    id 'com.google.dagger.hilt.android'
+    id 'com.google.dagger.hilt.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.21'
 }
 
@@ -78,12 +78,12 @@ dependencies {
     kapt libs.glide.compiler
 
     // dagger dependencies
-    implementation libs.dagger
-    kapt libs.dagger.compiler
+//    implementation libs.dagger
+//    kapt libs.dagger.compiler
 
     //hilt dependencies
-//    implementation libs.dagger.hilt.android
-//    kapt libs.dagger.hilt.compiler
+    implementation libs.dagger.hilt.android
+    kapt libs.dagger.hilt.compiler
 
 
     testImplementation libs.junit
