@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shoppingapp.di.ViewModelFactory
+import com.example.shoppingapp.ui.viewmodel.ViewModelFactory
 import com.example.shoppingapp.ui.recyclerview.ProductListAdapter
 import com.example.shoppingapp.ui.viewmodel.MainViewModel
 import javax.inject.Inject
