@@ -5,9 +5,7 @@ import com.example.shoppingapp.di.ApplicationComponent
 import com.example.shoppingapp.di.DaggerApplicationComponent
 
 class ShoppingApplication: Application() {
-
     val appComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent.create()
+        DaggerApplicationComponent.factory().create(this@ShoppingApplication)
     }
-
 }

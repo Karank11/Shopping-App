@@ -1,6 +1,7 @@
 package com.example.shoppingapp.di
 
 import com.example.shoppingapp.data.network.ProductsApiService
+import com.example.shoppingapp.data.repository.ProductsRepository
 import com.example.shoppingapp.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -25,4 +26,11 @@ class NetworkModule {
     fun getProductsApiService(retrofit: Retrofit): ProductsApiService {
         return retrofit.create(ProductsApiService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun getProductsRepository(productsApiService: ProductsApiService): ProductsRepository {
+        return ProductsRepository(productsApiService)
+    }
+
 }
