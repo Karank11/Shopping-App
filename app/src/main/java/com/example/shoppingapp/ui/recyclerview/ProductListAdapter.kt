@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shoppingapp.R
-import com.example.shoppingapp.data.models.ProductDto
+import com.example.shoppingapp.data.models.Product
 
-class ProductListAdapter: ListAdapter<ProductDto, ProductListAdapter.ProductItemViewHolder>(ProductItemDiffCallback()) {
+class ProductListAdapter: ListAdapter<Product, ProductListAdapter.ProductItemViewHolder>(ProductItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -43,12 +43,12 @@ class ProductListAdapter: ListAdapter<ProductDto, ProductListAdapter.ProductItem
         val productCategory: TextView = itemView.findViewById(R.id.product_category)
     }
 
-    class ProductItemDiffCallback: DiffUtil.ItemCallback<ProductDto>() {
-        override fun areItemsTheSame(oldItem: ProductDto, newItem: ProductDto): Boolean {
+    class ProductItemDiffCallback: DiffUtil.ItemCallback<Product>() {
+        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ProductDto, newItem: ProductDto): Boolean {
+        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem == newItem
         }
     }
