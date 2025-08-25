@@ -24,9 +24,17 @@ class ProductListAdapter: ListAdapter<Product, ProductListAdapter.ProductItemVie
     override fun onBindViewHolder(holder: ProductItemViewHolder, position: Int) {
         val item = getItem(position)
         holder.productTitle.text = item.title
-        holder.productPrice.text = "$${item.price}"
+        holder.productPrice.text = buildString {
+            append("$")
+            append(item.price)
+        }
         holder.productRating.rating = item.rating.rate.toFloat()
-        holder.productRatingCount.text = "(${item.rating.count})"
+
+        holder.productRatingCount.text = buildString {
+            append("(")
+            append(item.rating.count)
+            append(")")
+        }
         holder.productCategory.text = item.category
 
         Glide.with(holder.productImage.context)
