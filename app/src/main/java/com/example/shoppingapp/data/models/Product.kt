@@ -1,16 +1,16 @@
-package com.example.shoppingapp.data.network
+package com.example.shoppingapp.data.models
 
-data class ProductDto(
+data class Product(
     val image: String = "",
     val price: Double = 0.0,
-    val rating: RatingDto,
+    val rating: Rating,
     val description: String = "",
     val id: Int = 0,
     val title: String = "",
     val category: String = ""
 )
 
-data class RatingDto(
+data class Rating(
     val rate: Double = 0.0,
     val count: Int = 0
 )

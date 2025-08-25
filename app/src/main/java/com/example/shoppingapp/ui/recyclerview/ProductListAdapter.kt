@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shoppingapp.R
-import com.example.shoppingapp.data.network.ProductDto
+import com.example.shoppingapp.data.models.ProductDto
 
 class ProductListAdapter: ListAdapter<ProductDto, ProductListAdapter.ProductItemViewHolder>(ProductItemDiffCallback()) {
 
