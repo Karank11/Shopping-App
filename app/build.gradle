@@ -106,6 +106,8 @@ dependencies {
     // Import the Firebase BoM
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.messaging
+    implementation libs.firebase.config
+    implementation libs.firebase.analytics
 
     //razorpay sdk integration
     implementation libs.razorpay.checkout
