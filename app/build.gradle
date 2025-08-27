@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
 //    id 'com.google.dagger.hilt.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.21'
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -102,8 +103,14 @@ dependencies {
 //    implementation libs.dagger.hilt.android
 //    kapt libs.dagger.hilt.compiler
 
+    // Import the Firebase BoM
+    implementation platform(libs.firebase.bom)
+    implementation libs.firebase.messaging
+
     //razorpay sdk integration
     implementation libs.razorpay.checkout
+
+
 
 
     testImplementation libs.junit
