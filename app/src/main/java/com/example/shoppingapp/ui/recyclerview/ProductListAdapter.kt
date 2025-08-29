@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.shoppingapp.R
 import com.example.shoppingapp.data.models.Product
 
-class ProductListAdapter: ListAdapter<Product, ProductListAdapter.ProductItemViewHolder>(ProductItemDiffCallback()) {
+class ProductListAdapter(private val onProductClick: (product: Product) -> Unit): ListAdapter<Product, ProductListAdapter.ProductItemViewHolder>(ProductItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,7 +25,7 @@ class ProductListAdapter: ListAdapter<Product, ProductListAdapter.ProductItemVie
         val item = getItem(position)
         holder.productTitle.text = item.title
         holder.productPrice.text = buildString {
-            append("$")
+            append("₹")
             append(item.price)
         }
         holder.productRating.rating = item.rating.rate.toFloat()
@@ -40,6 +40,10 @@ class ProductListAdapter: ListAdapter<Product, ProductListAdapter.ProductItemVie
         Glide.with(holder.productImage.context)
             .load(item.image)
             .into(holder.productImage)
+
+        holder.itemView.setOnClickListener {
+            onProductClick(item)
+        }
     }
 
     class ProductItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

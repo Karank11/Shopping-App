@@ -16,11 +16,17 @@ class MainViewModel @Inject constructor (private val productsRepository: Product
     val products: LiveData<List<Product>>
         get() = _products
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun getAllProducts() {
         viewModelScope.launch {
+            _isLoading.postValue(true)
             withContext(Dispatchers.IO) {
                 val products = productsRepository.getAllProducts()
                 _products.postValue(products)
+                _isLoading.postValue(false)
             }
         }
     }
