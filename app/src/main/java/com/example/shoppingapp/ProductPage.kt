@@ -13,8 +13,13 @@ import com.example.shoppingapp.utils.Constants.TAG
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
 import org.json.JSONObject
+import javax.inject.Inject
 
 class ProductPage : AppCompatActivity(), PaymentResultListener {
+
+    @Inject
+    lateinit var checkout: Checkout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_page)
@@ -26,9 +31,9 @@ class ProductPage : AppCompatActivity(), PaymentResultListener {
         val productRatingCount: TextView = findViewById(R.id.product_rating_count)
         val buyNowButton: Button = findViewById(R.id.buy_now_button)
 
+        val appComponent = (application as ShoppingApplication).appComponent
+        appComponent.injectProductPage(this)
         Checkout.preload(applicationContext)
-        val checkout = Checkout()
-        checkout.setKeyID(BuildConfig.RAZORPAY_KEY_ID)
 
         val product = intent.getParcelableExtra<Product>("product")
         product?.let {
@@ -57,8 +62,6 @@ class ProductPage : AppCompatActivity(), PaymentResultListener {
     }
 
     private fun startPayment(price: Double?) {
-        val checkout = Checkout()
-        checkout.setKeyID(BuildConfig.RAZORPAY_KEY_ID)
         try {
             val options = JSONObject()
             options.put("name", "Shopping com.")
