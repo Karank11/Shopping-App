@@ -12,9 +12,11 @@ import com.example.shoppingapp.data.models.Product
 import com.example.shoppingapp.utils.Constants.TAG
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
+import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductPage : AppCompatActivity(), PaymentResultListener {
 
     @Inject
@@ -31,8 +33,6 @@ class ProductPage : AppCompatActivity(), PaymentResultListener {
         val productRatingCount: TextView = findViewById(R.id.product_rating_count)
         val buyNowButton: Button = findViewById(R.id.buy_now_button)
 
-        val appComponent = (application as ShoppingApplication).appComponent
-        appComponent.injectProductPage(this)
         Checkout.preload(applicationContext)
 
         val product = intent.getParcelableExtra<Product>("product")

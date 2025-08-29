@@ -1,5 +1,6 @@
 package com.example.shoppingapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
@@ -7,7 +8,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapp.data.models.Product
-import com.example.shoppingapp.ui.viewmodel.ViewModelFactory
 import com.example.shoppingapp.ui.recyclerview.ProductListAdapter
 import com.example.shoppingapp.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
