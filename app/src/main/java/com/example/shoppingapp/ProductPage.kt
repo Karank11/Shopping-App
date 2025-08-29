@@ -61,8 +61,8 @@ class ProductPage : AppCompatActivity(), PaymentResultListener {
         checkout.setKeyID(BuildConfig.RAZORPAY_KEY_ID)
         try {
             val options = JSONObject()
-            options.put("name", "Acme Corp.")
-            options.put("description", "Demoing Charges")
+            options.put("name", "Shopping com.")
+            options.put("description", "Payment process")
             options.put("currency", "INR")
             options.put("amount", price?.times(100))
 
